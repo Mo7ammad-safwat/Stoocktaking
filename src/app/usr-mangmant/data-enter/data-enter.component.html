@@ -1,0 +1,65 @@
+<div class="mt-4">
+    <form [formGroup]="myForm">
+        <!-- First row -->
+       
+            
+       
+        <div class="formgrid grid">
+            <div class="field col-4">
+                <label for="NameCompany">Name Company</label>
+                <input id="NameCompany" pInputText type="text" formControlName="nameCompany" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            </div>
+            <div class="field col-4">
+                <label for="NameDealer">Name Dealer</label>
+                <input id="NameDealer" pInputText type="text" formControlName="nameDealer" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            </div>
+        </div>
+
+        <!-- Second row -->
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col-4">
+                <label for="bollNumber">Boll Number</label>
+                <input type="number" pInputNumber formControlName="bollNumber" id="bollNumber">
+            </div>
+            <div class="p-field p-col-4">
+                <label for="invoiceDate">Invoice Date</label>
+                <input type="date" pInputText formControlName="invoiceDate" id="invoiceDate">
+            </div>
+        </div>
+
+        <div class="p-formgrid p-grid" formArrayName="address">
+            <ng-container *ngFor="let control of addresses.controls; let i = index">
+                <ng-container [formGroupName]="i">
+                    <div class="p-field p-col-2">
+                        <label for="productName{{i}}">Product Name</label>
+                        <input type="text" pInputText id="productName{{i}}" formControlName="productName">
+                    </div>
+                    <div class="p-field p-col-2">
+                        <label for="class{{i}}">Class</label>
+                        <input type="number" pInputNumber id="class{{i}}" formControlName="class">
+                    </div>
+                    <div class="p-field p-col-2">
+                        <label for="count{{i}}">Count</label>
+                        <input type="number" pInputNumber id="count{{i}}" formControlName="count">
+                    </div>
+                    <div class="p-field p-col-2">
+                        <label for="price{{i}}">Price</label>
+                        <input type="number" pInputNumber id="price{{i}}" formControlName="price">
+                    </div>
+                </ng-container>
+            </ng-container>
+        </div>
+
+        <!-- Buttons -->
+        <div class="formgrid grid">
+            <div class="field col-12 text-right">
+                <button type="button" pButton (click)="addAddress()" icon="pi pi-plus" class="button-success mr-2">
+                    Add
+                </button>
+                <button type="button" pButton (click)="onSubmit()" icon="pi pi-check" class="button-primary">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
