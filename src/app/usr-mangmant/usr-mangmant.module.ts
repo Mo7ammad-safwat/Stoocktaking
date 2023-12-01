@@ -8,6 +8,9 @@ import { DataEnterComponent } from './data-enter/data-enter.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { BillsComponent } from './bills/bills.component';
+import { TableModule } from 'primeng/table';
+import { ContextMenuModule } from 'primeng/contextmenu';
 
 
 
@@ -16,14 +19,17 @@ import { InputNumberModule } from 'primeng/inputnumber';
     HomepadgComponent,
     MortgagorComponent,
     CreditorComponent,
-    DataEnterComponent
+    DataEnterComponent,
+    BillsComponent
   ],
   imports: [
     CommonModule,
     CoreModule,
     ReactiveFormsModule,
     ButtonModule,
-    InputNumberModule 
+    InputNumberModule ,
+    TableModule,
+    ContextMenuModule
   ]
 })
 export class UsrMangmantModule { }

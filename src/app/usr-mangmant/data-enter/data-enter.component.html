@@ -16,36 +16,39 @@
         </div>
 
         <!-- Second row -->
-        <div class="p-formgrid p-grid">
-            <div class="p-field p-col-4">
-                <label for="bollNumber">Boll Number</label>
-                <input type="number" pInputNumber formControlName="bollNumber" id="bollNumber">
+        <div class="formgrid grid">
+            <div class="field col-4">
+                <label for="NameCompany">Boll Number</label>
+                <input id="bollNumber" type="number" pInputNumber formControlName="bollNumber" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
             </div>
-            <div class="p-field p-col-4">
-                <label for="invoiceDate">Invoice Date</label>
-                <input type="date" pInputText formControlName="invoiceDate" id="invoiceDate">
+            <div class="field col-4">
+                <label for="NameDealer">Invoice Date</label>
+                <input id="invoiceDate" pInputDate type="date" formControlName="invoiceDate" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
             </div>
         </div>
+       
 
-        <div class="p-formgrid p-grid" formArrayName="address">
+        <div class="formgrid grid" formArrayName="address">
             <ng-container *ngFor="let control of addresses.controls; let i = index">
                 <ng-container [formGroupName]="i">
-                    <div class="p-field p-col-2">
+                    <div class="field col-2">
                         <label for="productName{{i}}">Product Name</label>
-                        <input type="text" pInputText id="productName{{i}}" formControlName="productName">
+                        <input id="productName{{i}}" type="text" pInputText formControlName="productName" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
                     </div>
-                    <div class="p-field p-col-2">
-                        <label for="class{{i}}">Class</label>
-                        <input type="number" pInputNumber id="class{{i}}" formControlName="class">
+                    <div class="field col-2">
+                        <label for="class{{i}}">Product Name</label>
+                        <input id="class{{i}}" type="number" pInputNumber formControlName="class" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
                     </div>
-                    <div class="p-field p-col-2">
-                        <label for="count{{i}}">Count</label>
-                        <input type="number" pInputNumber id="count{{i}}" formControlName="count">
+                    <div class="field col-2">
+                        <label for="count{{i}}">Product Name</label>
+                        <input id="count{{i}}" type="number" pInputNumber formControlName="count" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
                     </div>
-                    <div class="p-field p-col-2">
-                        <label for="price{{i}}">Price</label>
-                        <input type="number" pInputNumber id="price{{i}}" formControlName="price">
+                    <div class="field col-2">
+                        <label for="price{{i}}">Product Name</label>
+                        <input id="price{{i}}" type="number" pInputNumber formControlName="price" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
                     </div>
+                    
+                   
                 </ng-container>
             </ng-container>
         </div>

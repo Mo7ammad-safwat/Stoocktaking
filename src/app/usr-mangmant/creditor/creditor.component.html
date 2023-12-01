@@ -1,17 +1,1 @@
 <p>creditor works!</p>
-<form [formGroup]="myForm">
-    <!-- other form controls -->
-  
-    <!-- Example of using FormArray -->
-    <div formArrayName="addresses">
-      <div *ngFor="let address of addresses.controls; let i = index" [formGroupName]="i">
-        <input formControlName="street" placeholder="Street" />
-        <input formControlName="city" placeholder="City" />
-        <!-- other address fields -->
-  
-       
-      </div>
-    </div>
-  
-    <button type="button" (click)="addAddress()">Add Address</button>
-  </form>

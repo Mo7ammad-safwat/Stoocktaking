@@ -1,43 +1,5 @@
-<div class="p-menubar">
-  <div class="container-fluid">
-      <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarCenteredExample"
-          aria-controls="navbarCenteredExample"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-      >
-          <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div
-          class="collapse navbar-collapse justify-content-center"
-          id="navbarCenteredExample"
-      >
-          <ul class="p-menu">
-              <li class="p-menuitem">
-                  <a [routerLink]="['/Home']" class="nav-link active" aria-current="page">Home</a>
-              </li>
-              <li class="p-menuitem">
-                  <a [routerLink]="['/dataentr']" class="nav-link">Link</a>
-              </li>
-              <li class="p-menuitem p-submenu">
-                  <a class="nav-link">Dropdown</a>
-                  <ul class="p-submenu-list">
-                      <li class="p-menuitem">
-                          <a [routerLink]="['/Debit']" class="nav-link">Debit</a>
-                      </li>
-                      <li class="p-menuitem">
-                          <a [routerLink]="['/credit']" class="nav-link">Credit</a>
-                      </li>
-                  </ul>
-              </li>
-              <li class="p-menuitem">
-                  <a [routerLink]="['/dataentr']" class="nav-link">Disabled</a>
-              </li>
-          </ul>
-      </div>
-  </div>
-</div>
+<p-menubar [model]="items">
+  
+    <ng-template pTemplate='start'> </ng-template>
+  
+</p-menubar>

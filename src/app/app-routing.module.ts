@@ -4,12 +4,14 @@ import { HomepadgComponent } from './usr-mangmant/homepadg/homepadg.component';
 import { CreditorComponent } from './usr-mangmant/creditor/creditor.component';
 import { MortgagorComponent } from './usr-mangmant/mortgagor/mortgagor.component';
 import { DataEnterComponent } from './usr-mangmant/data-enter/data-enter.component';
+import { BillsComponent } from './usr-mangmant/bills/bills.component';
 
 const routes: Routes = [
   { path: 'Home', component: HomepadgComponent},
   { path: 'credit', component: CreditorComponent},
   { path: 'Debit', component: MortgagorComponent},
   { path: 'dataentr', component: DataEnterComponent},
+  { path: 'Bills', component: BillsComponent},
   {path: '', redirectTo: '/Home', pathMatch: 'full'}
 ];
 

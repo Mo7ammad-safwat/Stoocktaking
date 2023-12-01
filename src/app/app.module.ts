@@ -11,6 +11,14 @@ import { ButtonModule } from 'primeng/button';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
+import { MenubarModule } from 'primeng/menubar';
+import { MenuModule } from 'primeng/menu';
+import { ContextMenuModule } from 'primeng/contextmenu';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { ToolbarModule } from 'primeng/toolbar';
+import { TableModule } from 'primeng/table';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -25,7 +33,13 @@ import { InputTextModule } from 'primeng/inputtext';
     ButtonModule,
     InputNumberModule,
     CardModule,
-    InputTextModule 
+    InputTextModule ,
+    MenubarModule,
+    MenuModule,
+    ContextMenuModule,
+    SelectButtonModule,
+    ToolbarModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
