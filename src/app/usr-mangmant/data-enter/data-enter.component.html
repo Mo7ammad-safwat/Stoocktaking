@@ -1,68 +1,130 @@
 <div class="mt-4">
-    <form [formGroup]="myForm">
-        <!-- First row -->
-       
-            
-       
-        <div class="formgrid grid">
-            <div class="field col-4">
-                <label for="NameCompany">Name Company</label>
-                <input id="NameCompany" pInputText type="text" formControlName="nameCompany" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-            </div>
-            <div class="field col-4">
-                <label for="NameDealer">Name Dealer</label>
-                <input id="NameDealer" pInputText type="text" formControlName="nameDealer" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-            </div>
-        </div>
+  <form [formGroup]="myForm">
+    <!-- First row -->
 
-        <!-- Second row -->
-        <div class="formgrid grid">
-            <div class="field col-4">
-                <label for="NameCompany">Boll Number</label>
-                <input id="bollNumber" type="number" pInputNumber formControlName="bollNumber" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-            </div>
-            <div class="field col-4">
-                <label for="NameDealer">Invoice Date</label>
-                <input id="invoiceDate" pInputDate type="date" formControlName="invoiceDate" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-            </div>
-        </div>
-       
+    <div class="formgrid grid col-offset-3">
+      <div class="field col-4">
+        <label for="NameCompany">Name Company</label>
+        <input
+          id="NameCompany"
+          pInputText
+          type="text"
+          formControlName="nameCompany"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+      </div>
+      <div class="field col-4">
+        <label for="NameDealer">Name Dealer</label>
+        <input
+          id="NameDealer"
+          pInputText
+          type="text"
+          formControlName="nameDealer"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+      </div>
+    </div>
 
-        <div class="formgrid grid" formArrayName="address">
-            <ng-container *ngFor="let control of addresses.controls; let i = index">
-                <ng-container [formGroupName]="i">
-                    <div class="field col-2">
-                        <label for="productName{{i}}">Product Name</label>
-                        <input id="productName{{i}}" type="text" pInputText formControlName="productName" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                    </div>
-                    <div class="field col-2">
-                        <label for="class{{i}}">Product Name</label>
-                        <input id="class{{i}}" type="number" pInputNumber formControlName="class" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                    </div>
-                    <div class="field col-2">
-                        <label for="count{{i}}">Product Name</label>
-                        <input id="count{{i}}" type="number" pInputNumber formControlName="count" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                    </div>
-                    <div class="field col-2">
-                        <label for="price{{i}}">Product Name</label>
-                        <input id="price{{i}}" type="number" pInputNumber formControlName="price" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                    </div>
-                    
-                   
-                </ng-container>
-            </ng-container>
-        </div>
+    <!-- Second row -->
+    <div class="formgrid grid col-offset-3">
+      <div class="field col-4">
+        <label for="NameCompany">Boll Number</label>
+        <input
+          id="bollNumber"
+          type="number"
+          pInputNumber
+          formControlName="bollNumber"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+      </div>
+      <div class="field col-4">
+        <label for="NameDealer">Invoice Date</label>
+        <input
+          id="invoiceDate"
+          pInputDate
+          type="date"
+          formControlName="invoiceDate"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+      </div>
+    </div>
 
-        <!-- Buttons -->
-        <div class="formgrid grid">
-            <div class="field col-12 text-right">
-                <button type="button" pButton (click)="addAddress()" icon="pi pi-plus" class="button-success mr-2">
-                    Add
-                </button>
-                <button type="button" pButton (click)="onSubmit()" icon="pi pi-check" class="button-primary">
-                    Submit
-                </button>
+    <div class="formgrid grid" formArrayName="address">
+      <ng-container *ngFor="let control of addresses.controls; let i = index">
+        <ng-container [formGroupName]="i">
+          <div class="formgrid grid col-offset-0">
+            <div class="field col max-w-2rem">
+              <span class="h-1rem text-center p-2 border-1 border-solid">{{
+                i + 1
+              }}</span>
             </div>
-        </div>
-    </form>
+            <div class="field col">
+              <label for="productName{{ i }}">Product Name</label>
+              <input
+                id="productName{{ i }}"
+                type="text"
+                pInputText
+                formControlName="productName"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              />
+            </div>
+            <div class="field col">
+              <label for="class{{ i }}">class</label>
+              <input
+                id="class{{ i }}"
+                type="number"
+                pInputNumber
+                formControlName="class"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              />
+            </div>
+            <div class="field col">
+              <label for="count{{ i }}">count</label>
+              <input
+                id="count{{ i }}"
+                type="number"
+                pInputNumber
+                formControlName="count"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              />
+            </div>
+            <div class="field col">
+              <label for="price{{ i }}">price</label>
+              <input
+                id="price{{ i }}"
+                type="number"
+                pInputNumber
+                formControlName="price"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              />
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <!-- Buttons -->
+    <div class="formgrid grid">
+      <div class="field col-12 text-right">
+        <button
+          type="button"
+          pButton
+          (click)="addAddress()"
+          icon="pi pi-plus"
+          class="button-success mr-2"
+        >
+          Add
+        </button>
+        <button
+          type="button"
+          pButton
+          (click)="onSubmit()"
+          icon="pi pi-check"
+          class="button-primary"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
 </div>

@@ -11,7 +11,12 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { BillsComponent } from './bills/bills.component';
 import { TableModule } from 'primeng/table';
 import { ContextMenuModule } from 'primeng/contextmenu';
-
+import { TriStateCheckboxModule } from 'primeng/tristatecheckbox';
+import { TreeTableModule } from 'primeng/treetable';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { ScrollerModule } from 'primeng/scroller';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { PanelModule } from 'primeng/panel';
 
 
 @NgModule({
@@ -20,16 +25,22 @@ import { ContextMenuModule } from 'primeng/contextmenu';
     MortgagorComponent,
     CreditorComponent,
     DataEnterComponent,
-    BillsComponent
+    BillsComponent,
   ],
   imports: [
     CommonModule,
     CoreModule,
     ReactiveFormsModule,
     ButtonModule,
-    InputNumberModule ,
+    InputNumberModule,
     TableModule,
-    ContextMenuModule
-  ]
+    ContextMenuModule,
+    TreeTableModule,
+    TriStateCheckboxModule,
+    ScrollPanelModule,
+    ScrollerModule,
+    ConfirmPopupModule,
+    PanelModule,
+  ],
 })
-export class UsrMangmantModule { }
+export class UsrMangmantModule {}

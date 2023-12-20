@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { UsrMangmantModule } from './usr-mangmant/usr-mangmant.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CardModule } from 'primeng/card';
@@ -17,12 +17,16 @@ import { ContextMenuModule } from 'primeng/contextmenu';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { ToolbarModule } from 'primeng/toolbar';
 import { TableModule } from 'primeng/table';
+import { TriStateCheckboxModule } from 'primeng/tristatecheckbox';
+import { TreeTableModule } from 'primeng/treetable';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { ScrollerModule } from 'primeng/scroller';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { PanelModule } from 'primeng/panel';
 
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,15 +37,22 @@ import { TableModule } from 'primeng/table';
     ButtonModule,
     InputNumberModule,
     CardModule,
-    InputTextModule ,
+    InputTextModule,
     MenubarModule,
     MenuModule,
     ContextMenuModule,
     SelectButtonModule,
     ToolbarModule,
-    TableModule
+    TableModule,
+    TriStateCheckboxModule,
+    TreeTableModule,
+    ScrollerModule,
+    ScrollPanelModule,
+    ConfirmPopupModule,
+    PanelModule,
+
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

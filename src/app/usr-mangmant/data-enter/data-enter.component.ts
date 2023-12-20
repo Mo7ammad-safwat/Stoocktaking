@@ -1,22 +1,35 @@
-import { Component  } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { ApiconttService } from 'src/app/sherde/apicontt.service';
+import { AddressItem } from 'src/app/sherde/pordact';
 
 @Component({
   selector: 'app-data-enter',
   templateUrl: './data-enter.component.html',
-  styleUrls: ['./data-enter.component.scss']
+  styleUrls: ['./data-enter.component.scss'],
 })
-export class DataEnterComponent  {
+export class DataEnterComponent {
+  [x: string]: any;
   myForm: FormGroup;
+  // address: FormArray;
 
-  constructor(private fb: FormBuilder,private fdb: FormBuilder, private http: HttpClient) {
+  // dataLoaded = false;
+
+  // singleData: any;
+  // singleDataLoaded = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private dataService: ApiconttService
+  ) {
     this.myForm = this.fb.group({
       nameCompany: [''],
       nameDealer: [''],
       bollNumber: [null],
       invoiceDate: [null],
-      address: this.fdb.array([]),
+      address: this.fb.array([]),
     });
   }
 
@@ -25,45 +38,56 @@ export class DataEnterComponent  {
   }
 
   addAddress() {
-    this.addresses.push(this.fdb.group({
+    const addressGroup = this.fb.group({
       productName: [''],
-      class: [""],
-      count: [""],
-      price: [""],
-    }));
+      class: [''],
+      count: [''],
+      price: [''],
+    });
+
+    this.addresses.push(addressGroup);
   }
 
   onSubmit() {
-    if (this.myForm.valid) {
-      const formData = this.myForm.value;
-  
-      // تحضير البيانات للإرسال
-      // const postData = {
-      //   nameCompany: formData.nameCompany,
-      //   nameDealer: formData.nameDealer,
-      //   bollNumber: formData.bollNumber,
-      //   invoiceDate: formData.invoiceDate,
-      //   addresses: formData.addresses.map((address: any) => ({
-      //     productName: address.productName,
-      //     class: address.class,
-      //     count: address.count,
-      //     price: address.price,
-      //   })),
-      // };
-  
-      this.http.post('http://localhost:3000/bill', formData)
-        .subscribe(
-          (response) => {
-            console.log('Form submitted successfully', response);
-          },
-          (error) => {
-            console.error('Error submitting form', error);
-          }
-        );
-    } else {
-      console.error('Form is invalid. Please fill in all required fields.');
-    }
-  }
-  
-}
+    // if (this.myForm.valid) {
+    //   const formData = this.myForm.value;
+    //   this.http.post('http://localhost:3000/bill', formData)
+    //     .subscribe(
+    //       (response) => {
+    //         console.log('Form submitted successfully', response);
+    //       },
+    //       (error) => {
+    //         console.error('Error submitting form', error);
+    //       }
+    //     );
+    // } else {
+    //   console.error('Form is invalid. Please fill in all required fields.');
+    // }
 
+    const formData = this.myForm.value;
+
+    this.dataService.postData(formData).subscribe(
+      (response) => {
+        console.log('Data added successfully:', response);
+        // Reload the data after addition
+        // this.loadData();
+      },
+      (error) => {
+        console.error('Error adding data:', error);
+      }
+    );
+         const prodacts: AddressItem[] = this.addresses.value;
+
+
+    this.dataService.postsinglData(prodacts).subscribe(
+      (response) => {
+        console.log('Data added successfully:', response);
+        // Reload the data after addition
+        // this.loadData();
+      },
+      (error) => {
+        console.error('Error adding data:', error);
+      }
+    );
+  }
+}

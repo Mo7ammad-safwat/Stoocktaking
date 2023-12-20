@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 import { ApiconttService } from 'src/app/sherde/apicontt.service';
-import { Pordact } from 'src/app/sherde/pordact';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,13 +9,28 @@ import { Observable } from 'rxjs';
   styleUrls: ['./homepadg.component.scss'],
 })
 export class HomepadgComponent implements OnInit {
-  products!: Pordact[];
+  data: Array<any> = [];
+  // dataLoaded = false;
 
-  constructor(private productService: ApiconttService) {}
+  singleData: any;
+  singleDataLoaded = false;
+
+  constructor(private dataService: ApiconttService) {}
 
   ngOnInit() {
-      this.productService.getprdact().subscribe((data: Pordact[]) => {
-          this.products = data;
-      });
+    this.loadData();
+  }
+
+  loadData() {
+    this.dataService.getData().subscribe(
+      (response) => {
+        return (this.data = response);
+        // this.dataLoaded = true;
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+      }
+    );
+    console.log(this.data);
   }
 }

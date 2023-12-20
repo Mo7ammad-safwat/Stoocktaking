@@ -1,12 +1,7 @@
-export interface Pordact {
-    id?: string;
-    code?: string;
-    name?: string;
-    description?: string;
-    price?: number;
-    quantity?: number;
-    inventoryStatus?: string;
-    category?: string;
-    image?: string;
-    rating?: number;
+export interface AddressItem {
+  productName: string;
+  class: number;
+  count: number;
+  price: number;
+  id?: number; // Optional, assuming 'id' is an optional property
 }

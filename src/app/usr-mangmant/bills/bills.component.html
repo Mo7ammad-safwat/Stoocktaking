@@ -1,1 +1,51 @@
-<p>bills works!</p>
+<div *ngFor="let product of invoice">
+<div class="grid" >
+  <div class="col-6">
+    <div class="text-center p-3 border-round-sm bg-primary font-bold">
+      Name Company : {{ product.nameCompany }}
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="text-center p-3 border-round-sm bg-primary font-bold">
+      Nam Dealer : {{ product.nameDealer }}
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="text-center p-3 border-round-sm bg-primary font-bold">
+      Boll Number : {{ product.bollNumber }}
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="text-center p-3 border-round-sm bg-primary font-bold">
+      {{ product.invoiceDate | date }} : تاريخ الفاتورة
+    </div>
+  </div>
+</div>
+
+<div class="invoice">
+  <p-table  [value]="product.address">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>اسم المنتج</th>
+        <th>الفئة</th>
+        <th>الكمية</th>
+        <th>السعر</th>
+        <th>الإجمالي</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-addr>
+      <ng-container >
+        <tr>
+          <td>{{ addr.productName }}</td>
+          <td>{{ addr.class }}</td>
+          <td>{{ addr.count }}</td>
+          <td>{{ addr.price }}</td>
+          <td>{{ addr.count * addr.price }}</td>
+        </tr>
+      </ng-container>
+    </ng-template>
+  </p-table>
+
+  <p>إجمالي الفاتورة: {{ getTotal() }}</p>
+</div>
+</div>
