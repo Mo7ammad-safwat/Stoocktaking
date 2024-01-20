@@ -23,10 +23,11 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { ScrollerModule } from 'primeng/scroller';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { PanelModule } from 'primeng/panel';
+import { OrderByPipe } from './sherde/order-by.pipe';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, OrderByPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -50,7 +51,6 @@ import { PanelModule } from 'primeng/panel';
     ScrollPanelModule,
     ConfirmPopupModule,
     PanelModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent],

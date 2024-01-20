@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ApiconttService } from 'src/app/sherde/apicontt.service';
-import { AddressItem } from 'src/app/sherde/pordact';
 
 @Component({
   selector: 'app-data-enter',
@@ -46,6 +45,7 @@ export class DataEnterComponent {
     });
 
     this.addresses.push(addressGroup);
+
   }
 
   onSubmit() {
@@ -76,18 +76,18 @@ export class DataEnterComponent {
         console.error('Error adding data:', error);
       }
     );
-         const prodacts: AddressItem[] = this.addresses.value;
 
 
-    this.dataService.postsinglData(prodacts).subscribe(
-      (response) => {
-        console.log('Data added successfully:', response);
-        // Reload the data after addition
-        // this.loadData();
-      },
-      (error) => {
-        console.error('Error adding data:', error);
-      }
-    );
+
+    // this.dataService.postsinglData(prodacts).subscribe(
+    //   (response) => {
+    //     console.log('Data added successfully:', response);
+    //     // Reload the data after addition
+    //     // this.loadData();
+    //   },
+    //   (error) => {
+    //     console.error('Error adding data:', error);
+    //   }
+    // );
   }
 }

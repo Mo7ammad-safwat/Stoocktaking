@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiconttService {
   private apiUrl = 'http://localhost:3000/bill';
-  private apisingUrl = 'http://localhost:3000/product';
+  // private apisingUrl = 'http://localhost:3000/product';
   constructor(private http: HttpClient) {}
 
   getData(): Observable<any> {
@@ -18,8 +18,8 @@ export class ApiconttService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(this.apiUrl, data, { headers });
   }
-  postsinglData(data: any): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(this.apisingUrl, data, { headers });
-  }
+  // postsinglData(data: any): Observable<any> {
+  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  //   return this.http.post<any>(this.apisingUrl, data, { headers });
+  // }
 }

@@ -9,11 +9,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./homepadg.component.scss'],
 })
 export class HomepadgComponent implements OnInit {
-  data: Array<any> = [];
-  // dataLoaded = false;
-
-  singleData: any;
-  singleDataLoaded = false;
+  invoice: any;
+  invoiceData: any;
 
   constructor(private dataService: ApiconttService) {}
 
@@ -23,14 +20,32 @@ export class HomepadgComponent implements OnInit {
 
   loadData() {
     this.dataService.getData().subscribe(
-      (response) => {
-        return (this.data = response);
-        // this.dataLoaded = true;
+      (data) => {
+        this.invoice = data;
+        this.invoiceData = this.getTotal(); // الآن يمكن استدعاء getTotal بأمان
+        console.log(this.invoice);
       },
       (error) => {
         console.error('Error fetching data:', error);
       }
     );
-    console.log(this.data);
+  }
+
+  getTotal() {
+    const total: { productName: any; class: any; count: any; price: any; totalPrice: number; }[] = [];
+
+    this.invoice.forEach((product: { address: any[]; }) => {
+      product.address.forEach((addr: { productName: any; class: any; count: number; price: number; }) => {
+        total.push({
+          productName: addr.productName,
+          class: addr.class,
+          count: addr.count,
+          price: addr.price,
+          totalPrice: addr.count * addr.price,
+        });
+      });
+    });
+
+    return total;
   }
 }

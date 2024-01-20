@@ -8,6 +8,7 @@ import { ApiconttService } from 'src/app/sherde/apicontt.service';
 })
 export class BillsComponent implements OnInit {
   invoice: any;
+  order = 'asc';
 
   constructor(private dataService: ApiconttService) {}
 
@@ -19,7 +20,7 @@ export class BillsComponent implements OnInit {
     this.dataService.getData().subscribe(
       (data) => {
         this.invoice = data;
-        console.log(data)
+        console.log(data);
       },
       (error) => {
         console.error('Error fetching invoice data:', error);
@@ -28,13 +29,18 @@ export class BillsComponent implements OnInit {
 
     console.log(this.invoice);
   }
+  toggleOrder() {
+    this.order = this.order === 'asc' ? 'desc' : 'asc';
+  }
 
-  getTotal(): number {
-    return (
-      this.invoice?.address?.reduce(
-        (total: number, item: { count: number; price: number; }) => total + item.count * item.price,
-        0
-      ) || 0
-    );
+
+  getTotal() {
+    let total = 0;
+    this.invoice.forEach((product: { address: any[] }) => {
+      product.address.forEach((addr: { count: number; price: number }) => {
+        total += addr.count * addr.price;
+      });
+    });
+    return total;
   }
 }
