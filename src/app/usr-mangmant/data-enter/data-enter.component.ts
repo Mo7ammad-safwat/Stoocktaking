@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ApiconttService } from 'src/app/sherde/apicontt.service';
 
@@ -24,10 +24,16 @@ export class DataEnterComponent {
     private dataService: ApiconttService
   ) {
     this.myForm = this.fb.group({
-      nameCompany: [''],
-      nameDealer: [''],
-      bollNumber: [null],
-      invoiceDate: [null],
+      nameCompany: [
+        '',
+        [Validators.required, Validators.pattern('[a-zA-Z ]*')],
+      ],
+      nameDealer: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-Z]*$')],
+      ],
+      bollNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      invoiceDate: [null, Validators.required],
       address: this.fb.array([]),
     });
   }
@@ -38,56 +44,48 @@ export class DataEnterComponent {
 
   addAddress() {
     const addressGroup = this.fb.group({
-      productName: [''],
-      class: [''],
-      count: [''],
-      price: [''],
+      productName: [
+        '',
+        [Validators.required, Validators.pattern('[a-zA-Z]*')],
+      ],
+      class: ['', [Validators.required, Validators.pattern('[0-9]+')]],
+      count: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[0-9]+$'),
+          Validators.min(1),
+        ],
+      ],
+      price: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[0-9]+(\\.[0-9]{1,2})?$'),
+          Validators.min(0.01),
+        ],
+      ],
     });
 
     this.addresses.push(addressGroup);
-
   }
 
-  onSubmit() {
-    // if (this.myForm.valid) {
-    //   const formData = this.myForm.value;
-    //   this.http.post('http://localhost:3000/bill', formData)
-    //     .subscribe(
-    //       (response) => {
-    //         console.log('Form submitted successfully', response);
-    //       },
-    //       (error) => {
-    //         console.error('Error submitting form', error);
-    //       }
-    //     );
-    // } else {
-    //   console.error('Form is invalid. Please fill in all required fields.');
-    // }
-
-    const formData = this.myForm.value;
-
-    this.dataService.postData(formData).subscribe(
-      (response) => {
-        console.log('Data added successfully:', response);
-        // Reload the data after addition
-        // this.loadData();
-      },
-      (error) => {
-        console.error('Error adding data:', error);
-      }
-    );
-
-
-
-    // this.dataService.postsinglData(prodacts).subscribe(
-    //   (response) => {
-    //     console.log('Data added successfully:', response);
-    //     // Reload the data after addition
-    //     // this.loadData();
-    //   },
-    //   (error) => {
-    //     console.error('Error adding data:', error);
-    //   }
-    // );
+  onSubmit(): void {
+    if (this.myForm.valid) {
+      const formData = this.myForm.value;
+      this.dataService.postData(formData).subscribe({
+        next: (response) => {
+          console.log('Data added successfully:', response);
+          // Reload the data or redirect user
+        },
+        error: (error) => {
+          console.error('Error adding data:', error);
+          // Show error message to user
+        },
+      });
+    } else {
+      console.error('Form is invalid. Please fill in all required fields.');
+      // Show validation errors
+    }
   }
 }

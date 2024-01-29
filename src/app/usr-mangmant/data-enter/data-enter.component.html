@@ -1,5 +1,5 @@
 <div class="mt-4">
-  <form [formGroup]="myForm">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <!-- First row -->
 
     <div class="formgrid grid col-offset-3">
@@ -12,6 +12,14 @@
           formControlName="nameCompany"
           class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
         />
+        <div *ngIf="myForm.get('nameCompany')?.touched">
+          <div *ngIf="myForm.get('nameCompany')?.errors?.['required']">
+            Name Company is required.
+          </div>
+          <div *ngIf="myForm.get('nameCompany')?.errors?.['minLength']">
+            Name Company must be at least 3 characters.
+          </div>
+        </div>
       </div>
       <div class="field col-4">
         <label for="NameDealer">Name Dealer</label>
@@ -116,11 +124,11 @@
           Add
         </button>
         <button
-          type="button"
+          type="submit"
           pButton
-          (click)="onSubmit()"
           icon="pi pi-check"
           class="button-primary"
+          [disabled]="!myForm.valid"
         >
           Submit
         </button>

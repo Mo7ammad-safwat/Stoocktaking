@@ -1,0 +1,82 @@
+{
+  "bill": [
+    {
+      "nameCompany": "ahmd ",
+      "nameDealer": "ahmd",
+      "bollNumber": 54232,
+      "invoiceDate": "2023-12-12",
+      "address": [
+        {
+          "productName": "as",
+          "class": 3,
+          "count": 3,
+          "price": 3
+        },
+        {
+          "productName": "3",
+          "class": 3,
+          "count": 3,
+          "price": 3
+        }
+      ],
+      "id": 1
+    },
+    {
+      "nameCompany": "تايجر",
+      "nameDealer": "سيد",
+      "bollNumber": 4258,
+      "invoiceDate": "2023-12-21",
+      "address": [
+        {
+          "productName": "شبسي",
+          "class": 5,
+          "count": 4,
+          "price": 48
+        },
+        {
+          "productName": "شبسي",
+          "class": 3,
+          "count": 20,
+          "price": 22
+        },
+        {
+          "productName": "رنجو",
+          "class": 2,
+          "count": 10,
+          "price": 22
+        }
+      ],
+      "id": 2
+    },
+    {
+      "nameCompany": "ahmd",
+      "nameDealer": "ail",
+      "bollNumber": 23456,
+      "invoiceDate": "2024-01-11",
+      "address": [
+        {
+          "productName": "dast",
+          "class": 2,
+          "count": 5,
+          "price": 10
+        }
+      ],
+      "id": 3
+    },
+    {
+      "nameCompany": "Zss",
+      "nameDealer": "5",
+      "bollNumber": 5353,
+      "invoiceDate": "2024-01-18",
+      "address": [
+        {
+          "productName": "sds",
+          "class": 33,
+          "count": 33,
+          "price": 33
+        }
+      ],
+      "id": 4
+    }
+  ]
+}
