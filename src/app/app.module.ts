@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { UsrMangmantModule } from './usr-mangmant/usr-mangmant.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CardModule } from 'primeng/card';
@@ -24,6 +24,7 @@ import { ScrollerModule } from 'primeng/scroller';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { PanelModule } from 'primeng/panel';
 import { OrderByPipe } from './sherde/order-by.pipe';
+import { TagModule } from 'primeng/tag';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { OrderByPipe } from './sherde/order-by.pipe';
     ScrollPanelModule,
     ConfirmPopupModule,
     PanelModule,
+    TagModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

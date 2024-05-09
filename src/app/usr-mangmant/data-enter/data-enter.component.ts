@@ -48,7 +48,7 @@ export class DataEnterComponent {
         '',
         [Validators.required, Validators.pattern('[a-zA-Z]*')],
       ],
-      class: ['', [Validators.required, Validators.pattern('[0-9]+')]],
+      class: ['', [Validators.required, Validators.pattern('[0-9]')]],
       count: [
         '',
         [

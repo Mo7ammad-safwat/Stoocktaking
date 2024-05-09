@@ -1,44 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Customer } from './../../sherde/cvs';
+import { CustomerService } from './../../sherde/custmser';
 
 @Component({
   selector: 'app-creditor',
   templateUrl: './creditor.component.html',
-  styleUrls: ['./creditor.component.scss']
+  styleUrls: ['./creditor.component.scss'],
 })
 export class CreditorComponent implements OnInit {
-  myForm!: FormGroup;
+  customers: Customer[] = [];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private customerService: CustomerService) {}
 
   ngOnInit() {
-    this.myForm = this.fb.group({
-      // other form controls
-      // ...
-
-      // Example of using FormArray
-      addresses: this.fb.array([]),
+    this.customerService.getCustomersMedium().then((data) => {
+      this.customers = data;
     });
   }
 
-  get addresses(): FormArray {
-    return this.myForm.get('addresses') as FormArray;
-  }
+  calculateCustomerTotal(name: string | undefined) {
+    let total = 0;
 
-  // Helper method to add an address form group
-  addAddress() {
-    this.addresses.push(this.createAddressFormGroup());
-  }
+    if (this.customers) {
+      for (const customer of this.customers) {
+        const representative = customer.representative;
+        if (representative?.name === name) {
+          total++;
+        }
+      }
+    }
 
-  // Helper method to remove an address form group
- 
-
-  // Helper method to create an address form group
-  createAddressFormGroup() {
-    return this.fb.group({
-      street: ['', Validators.required],
-      city: ['', Validators.required],
-      // other address fields
-    });
+    return total;
   }
 }
+

@@ -17,8 +17,7 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { ScrollerModule } from 'primeng/scroller';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { PanelModule } from 'primeng/panel';
-import { OrderByPipe } from '../sherde/order-by.pipe';
-
+import { TagModule } from 'primeng/tag';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,6 @@ import { OrderByPipe } from '../sherde/order-by.pipe';
     CreditorComponent,
     DataEnterComponent,
     BillsComponent,
-   
   ],
   imports: [
     CommonModule,
@@ -43,6 +41,7 @@ import { OrderByPipe } from '../sherde/order-by.pipe';
     ScrollerModule,
     ConfirmPopupModule,
     PanelModule,
+    TagModule,
   ],
 })
 export class UsrMangmantModule {}
