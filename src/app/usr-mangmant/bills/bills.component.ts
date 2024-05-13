@@ -33,7 +33,6 @@ export class BillsComponent implements OnInit {
     this.order = this.order === 'asc' ? 'desc' : 'asc';
   }
 
-
   getTotal() {
     let total = 0;
     this.invoice.forEach((product: { address: any[] }) => {

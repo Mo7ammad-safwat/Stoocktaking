@@ -44,10 +44,7 @@ export class DataEnterComponent {
 
   addAddress() {
     const addressGroup = this.fb.group({
-      productName: [
-        '',
-        [Validators.required, Validators.pattern('[a-zA-Z]*')],
-      ],
+      productName: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
       class: ['', [Validators.required, Validators.pattern('[0-9]')]],
       count: [
         '',

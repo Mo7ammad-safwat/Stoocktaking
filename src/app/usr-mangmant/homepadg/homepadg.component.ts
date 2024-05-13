@@ -32,18 +32,31 @@ export class HomepadgComponent implements OnInit {
   }
 
   getTotal() {
-    const total: { productName: any; class: any; count: any; price: any; totalPrice: number; }[] = [];
+    const total: {
+      productName: any;
+      class: any;
+      count: any;
+      price: any;
+      totalPrice: number;
+    }[] = [];
 
-    this.invoice.forEach((product: { address: any[]; }) => {
-      product.address.forEach((addr: { productName: any; class: any; count: number; price: number; }) => {
-        total.push({
-          productName: addr.productName,
-          class: addr.class,
-          count: addr.count,
-          price: addr.price,
-          totalPrice: addr.count * addr.price,
-        });
-      });
+    this.invoice.forEach((product: { address: any[] }) => {
+      product.address.forEach(
+        (addr: {
+          productName: any;
+          class: any;
+          count: number;
+          price: number;
+        }) => {
+          total.push({
+            productName: addr.productName,
+            class: addr.class,
+            count: addr.count,
+            price: addr.price,
+            totalPrice: addr.count * addr.price,
+          });
+        }
+      );
     });
 
     return total;
