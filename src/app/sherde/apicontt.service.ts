@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiconttService {
-  private apiUrl = 'http://localhost:3000/bill';
+  private apiUrl = 'https://moke-data1.onrender.com/api/bill';
   // private apisingUrl = 'http://localhost:3000/product';
   constructor(private http: HttpClient) {}
 
